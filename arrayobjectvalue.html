@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = [{
+        regulationsId: 5172,
+        title: "测试111标题2 ",
+        type: 610,
+        state: 1,
+        createdTime: 1530152467000
+      },
+      {
+        regulationsId: 5169,
+        title: "测试111标题",
+        type: 610,
+        state: 1,
+        createdTime: 1530085573000
+      },
+      {
+        regulationsId: 5170,
+        title: "测试123标题",
+        type: 609,
+        state: 1,
+        createdTime: 1530085687000
+      },
+      {
+        regulationsId: 5171,
+        title: "测试1122标题",
+        type: 608,
+        state: 1,
+        createdTime: 1530085750000
+      }
+    ];
+
+
+    //先获取一下这个数组中有多少个type
+
+    var types = [];
+
+    /* for (var i in arr) {
+      if (types.indexOf(arr[i].type) === -1) {
+        types.push(arr[i].type)
+      }
+    } */
+for (var i in arr) {
+if (types.indexOf(arr[i].type)) {
+types.push("types:"+arr[i].type)
+}
+}
+    //一个包含多个list的结果对象
+
+    var obj = {};
+
+
+    //根据type生成多个数组
+
+    for (var k in types) {
+
+      for (var j in arr) {
+        if (arr[j].type == types[k]) {
+          console.log(types[k],
+            ">>>>>>>>>", arr[j])
+          obj[types[k]] = obj[types[k]] || [];
+          obj[types[k]].push(arr[j])
+        }
+      }
+    }
+    console.log(types)
+    console.log(obj)
+
+  </script>
+</body>
+
+</html>

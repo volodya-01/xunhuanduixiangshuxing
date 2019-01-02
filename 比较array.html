@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var onlineu = [10002,10003,10004,10001];
+var nowu = [10003,10004,10005];
+function getdiffarr(A,B){
+var C = new Array();
+var D = new Array();
+var E = new Array();
+var Astr = ","+ A.toString() +",";
+var Bstr = ","+ B.toString() +",";
+for(var i in A ){
+if(Bstr.indexOf(","+A[i]+",") >=0){
+
+}else{
+C.push(A[i]);
+}
+}
+for(var p in B){
+if(Astr.indexOf(","+B[p]+",") >=0){
+
+}else{
+D.push(B[p]);
+}
+}
+E.push(C);
+E.push(D);
+return E;
+}
+
+var F = getdiffarr(onlineu,nowu);
+for(var j in F)
+alert(F[j].toString());
+    </script>
+</body>
+</html>

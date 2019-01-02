@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script type="text/javascript" src="animation.js"></script>
+
+  <script type="text/javascript">
+    function timeScaleChartFun() {
+      console.info("callback:" + this);
+    }
+
+    window.onload = function () {
+      var timeScaleChartOptions = {};
+      var canvas = document.getElementById("Chart");
+      canvas.width = document.body.clientWidth;
+      canvas.style.width = canvas.width + "px";
+      canvas.style.height = canvas.height + "px";
+      canvas.width = canvas.width * diviceRatio;
+      canvas.height = canvas.height * diviceRatio;
+      //背景颜色
+      timeScaleChartOptions.backgroundColor = "#F3F3F3";
+      //字颜色
+      timeScaleChartOptions.labelColors = ["#d1445a"];
+      //线颜色：1，横线颜色；2，竖线颜色
+      timeScaleChartOptions.lineColors = ["#d1445a", "#faaa6c"];
+      //选中滑动图标
+      timeScaleChartOptions.chooseImg = "images/timeScaleChart@2x.png";
+      //默认选中月份
+      timeScaleChartOptions.chooseIndex = 9.5;
+      //回调函数，当鼠标点击和滑动使得其值更改时，会执行此函数，并把更改后的值返回给this
+      timeScaleChartOptions.callback = timeScaleChartFun;
+      var chart = new TimeScaleChart(canvas, timeScaleChartOptions);
+      chart.init();
+    }
+
+  </script>
+</head>
+
+<body>
+  <canvas id="Chart" width="" height="100"></canvas>
+</body>
+
+</html>

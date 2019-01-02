@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var s = [{
+        "f": "AAA",
+        "t": "LXRE-50",
+        "g": 81,
+        "d": 50,
+        "min": 1,
+        "max": 100000,
+        "p01": 0,
+        "p12": 0,
+        "p23": 100,
+        "p34": 0,
+        "p45": 0,
+        "q1": 0.25,
+        "q2": 1,
+        "q3": 40,
+        "q4": 50,
+        "label": "当前表型"
+      },
+      {
+        "f": "AAA",
+        "t": "LXRE-50",
+        "g": 81,
+        "d": 50,
+        "min": 1,
+        "max": 100000,
+        "p01": 0,
+        "p12": 0,
+        "p23": 100,
+        "p34": 0,
+        "p45": 0,
+        "q1": 0.25,
+        "q2": 1,
+        "q3": 40,
+        "q4": 50,
+        "label": "当前表型"
+      },
+      {
+        "f": "AAA",
+        "t": "LXRE-80",
+        "g": 73,
+        "d": 80,
+        "min": 1,
+        "max": 100000,
+        "p01": 0,
+        "p12": 0,
+        "p23": 100,
+        "p34": 0,
+        "p45": 0,
+        "q1": 0.4,
+        "q2": 1.58,
+        "q3": 63,
+        "q4": 78,
+        "label": "可选表型"
+      },
+      {
+        "f": "AAA",
+        "t": "LXRE-100",
+        "g": 67,
+        "d": 100,
+        "min": 1,
+        "max": 100000,
+        "p01": 0,
+        "p12": 0,
+        "p23": 100,
+        "p34": 0,
+        "p45": 0,
+        "q1": 0.63,
+        "q2": 2.5,
+        "q3": 100,
+        "q4": 125,
+        "label": "可选表型"
+      },
+      {
+        "f": "AAA",
+        "t": "LXRE-150",
+        "g": 61,
+        "d": 150,
+        "min": 1,
+        "max": 100000,
+        "p01": 0,
+        "p12": 0,
+        "p23": 100,
+        "p34": 0,
+        "p45": 0,
+        "q1": 1.56,
+        "q2": 6,
+        "q3": 250,
+        "q4": 312,
+        "label": ""
+      },
+      {
+        "f": "AAA",
+        "t": "LXRE-200",
+        "g": 54,
+        "d": 200,
+        "min": 1,
+        "max": 100000,
+        "p01": 0,
+        "p12": 40.10349288486417,
+        "p23": 59.89650711513583,
+        "p34": 0,
+        "p45": 0,
+        "q1": 2.5,
+        "q2": 10,
+        "q3": 400,
+        "q4": 500,
+        "label": ""
+      },
+      {
+        "f": "AAA",
+        "t": "LXRE-300",
+        "g": -100,
+        "d": 300,
+        "min": 1,
+        "max": 100000,
+        "p01": 100,
+        "p12": 0,
+        "p23": 0,
+        "p34": 0,
+        "p45": 0,
+        "q1": 50,
+        "q2": 80,
+        "q3": 1000,
+        "q4": 1250,
+        "label": ""
+      }
+    ]
+    var yleftdata = [s[0].p01, s[0].p12, s[0].p23, s[0].p34, s[0].p45]
+var xleftdata = [s[0].q1,(s[0].q1+ s[0].q2)/2, s[0].q2,(s[0].q2+ s[0].q3)/2,s[0].q3,(s[0].q3+ s[0].q4)/2,s[0].q4, ]
+    console.log(yleftdata)
+    console.log(xleftdata)
+    var xdata = [];
+    for (var i = 1; i <= s.length - 1; i++) {
+      var xdataobj = [];
+      xdataobj[0] = parseFloat(s[i].q1);
+      xdataobj[1] = (parseFloat(s[i].q1) + parseFloat(s[i].q2)) / 2;
+      xdataobj[2] = parseFloat(s[i].q2);
+      xdataobj[3] = (parseFloat(s[i].q2) + parseFloat(s[i].q3)) / 2;
+      xdataobj[4] = parseFloat(s[i].q3);
+      xdataobj[5] = (parseFloat(s[i].q3) + parseFloat(s[i].q4)) / 2;
+      xdataobj[6] = parseFloat(s[i].q4);
+      xdataobj[7] = (parseFloat(s[i].q4) * 2) / 2;
+      xdata.push(xdataobj);
+    }
+    console.log(xdata)
+    var ydata = [];
+    for (var i = 1; i <= s.length - 1; i++) {
+      var ydataobj = [];
+      ydataobj[0] = parseFloat(s[i].p01);
+      ydataobj[1] = parseFloat(0);
+      ydataobj[2] = parseFloat(s[i].p23);
+      ydataobj[3] = parseFloat(0);
+      ydataobj[4] = parseFloat(s[i].p45);
+      ydataobj[5] = parseFloat(0);
+      ydataobj[6] = parseFloat(s[i].p34);
+      ydataobj[7] = parseFloat(0);
+      ydata.push(ydataobj);
+    }
+    console.log(ydata)
+    var typedata = [];
+    for (var i = 1; i <= s.length - 1; i++) {
+      var t;
+      var g;
+      var d;
+      var typedataobj = {
+        t,
+        g,
+        d
+      };
+      typedataobj.t = s[i].t;
+      typedataobj.g = parseFloat(s[i].g);
+      typedataobj.d = parseFloat(s[i].d);
+      typedata.push(typedataobj);
+    }
+    console.log(typedata)
+    var labeldata = [];
+    for (var i = 1; i <= s.length - 1; i++) {
+      labeldata.push(s[i].label);
+    }
+    console.log(labeldata)
+    /*  for (var i = 0; i <= s.length - 1; i++) {
+       var q1;
+       var q2;
+       var q3;
+       var q4;
+       var yhtsobj = {
+         q1,
+         q2,
+         q3,
+         q4
+       };
+       yhtsobj.q1 = parseFloat(s[i].q1);
+       yhtsobj.q2 = parseFloat(s[i].q2);
+       yhtsobj.q3 = parseFloat(s[i].q3);
+       yhtsobj.q4 = parseFloat(s[i].q4);
+       yhts.push(yhtsobj);
+     } */
+
+
+    /*  var arr = [{
+        regulationsId: 5172,
+        title: "测试111标题2 ",
+        type: 610,
+        state: 1,
+        createdTime: 1530152467000
+      },
+      {
+        regulationsId: 5169,
+        title: "测试111标题",
+        type: 610,
+        state: 1,
+        createdTime: 1530085573000
+      },
+      {
+        regulationsId: 5170,
+        title: "测试123标题",
+        type: 609,
+        state: 1,
+        createdTime: 1530085687000
+      },
+      {
+        regulationsId: 5171,
+        title: "测试1122标题",
+        type: 608,
+        state: 1,
+        createdTime: 1530085750000
+      }
+    ];
+
+ */
+    //先获取一下这个数组中有多少个type
+
+    /* var types = []; */
+
+    /* for (var i in arr) {
+      if (types.indexOf(arr[i].type) === -1) {
+        types.push(arr[i].type)
+      }
+    } */
+    /*   for (var i in arr) {
+        if (types.indexOf(arr[i].type)) {
+          types.push("types:" + arr[i].type)
+        }
+      } */
+    //一个包含多个list的结果对象
+
+    /*  var obj = {}; */
+
+
+    //根据type生成多个数组
+
+    /*  for (var k in types) {
+
+       for (var j in arr) {
+         if (arr[j].type == types[k]) {
+           console.log(types[k],
+             ">>>>>>>>>", arr[j])
+           obj[types[k]] = obj[types[k]] || [];
+           obj[types[k]].push(arr[j])
+         }
+       }
+     }
+     console.log(types)
+     console.log(obj) */
+
+  </script>
+</body>
+
+</html>
